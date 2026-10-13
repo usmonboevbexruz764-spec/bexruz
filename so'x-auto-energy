@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SO‘X AUTO ENERGY</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --green:#08a85a;--dark:#003d2d;--dark2:#00291f;--light:#f3fbf7;
+ --text:#17352d;--muted:#78918a;--white:#fff;--border:#e5eee9;
+}
+body{font-family:Inter,Arial,sans-serif;background:#f7faf9;color:var(--text);line-height:1.45}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+.container{width:min(1180px,92%);margin:auto}
+
+/* HEADER */
+header{background:#00382b;color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 3px 15px #0002}
+.nav{height:72px;display:flex;align-items:center;gap:30px}
+.logo{display:flex;align-items:center;gap:10px;margin-right:auto}
+.logo-mark{width:38px;height:38px;border:4px solid #12c86c;border-radius:50%;display:grid;place-items:center;color:#12c86c;font-size:22px;font-weight:900}
+.logo b{font-size:22px;line-height:18px}.logo small{display:block;font-size:9px;color:#9dc8ba;letter-spacing:1.3px}
+nav{display:flex;gap:28px;font-size:14px;color:#d8e9e4}
+nav a:first-child{color:#28dc82;border-bottom:2px solid #16c86b;padding-bottom:7px}
+.phone{background:#09a95d;padding:11px 18px;border-radius:9px;font-size:13px;font-weight:700}
+.menu{display:none;font-size:25px}
+
+/* HERO */
+.hero{min-height:430px;
+   color:#fff;
+   background-image: url("./metan.jpg");   
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+.hero-inner{min-height:430px;display:flex;align-items:center}
+.hero-copy{max-width:570px}
+.badge{display:inline-block;background:#168a59;padding:8px 15px;border-radius:20px;font-size:13px;margin-bottom:15px}
+.hero h1{font-size:52px;line-height:1.04;margin-bottom:12px}
+.hero h1 span{color:#18ce72}
+.hero p{font-size:17px;color:#d9ebe5;margin-bottom:25px}
+.features{display:flex;gap:28px;flex-wrap:wrap;font-size:13px}
+.features span{display:flex;align-items:center;gap:8px}.check{background:#138d5b;border-radius:50%;width:24px;height:24px;display:grid;place-items:center}
+
+/* FUEL */
+.fuel-section{margin-top:-45px;position:relative;z-index:2}
+.fuel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:#fff;border:1px solid var(--border);border-radius:13px;box-shadow:0 5px 18px #073d2b10;padding:20px}
+.fuel-card{min-height:185px}
+.fuel-top{display:flex;align-items:center;gap:14px}
+.nozzle{width:50px;height:65px;font-size:45px}
+.metan{color:#08a85a}.propan{color:#1878d1}.benzin{color:#e52934}.dizel{color:#d99b10}
+.fuel-name{font-weight:800;font-size:18px}
+.status{font-size:10px;background:#e9faef;color:#0a9d58;padding:4px 7px;border-radius:10px;margin-left:5px}
+.status.off{background:#fff2df;color:#c88000}
+.fuel-info{font-size:12px;color:#81948e;margin:10px 0 14px}
+.btn{width:100%;border:0;border-radius:7px;padding:11px;color:#fff;background:#09a95d;font-weight:700;cursor:pointer}
+.btn.blue{background:#1679d4}.btn.red{background:#e3232d}.btn.yellow{background:#dca30d}
+
+/* INFO */
+.info-grid{display:grid;grid-template-columns:1fr 1.15fr .95fr;gap:18px;margin:20px 0}
+.title{font-size:18px;font-weight:800;margin-bottom:13px}
+.live{float:right;color:#08a85a;font-size:12px}
+.queue-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #edf2f0;font-size:13px}
+.queue-row span:last-child{color:#6e8980}
+.map{height:170px;background:#e8eee9;border-radius:10px;position:relative;overflow:hidden}
+.map:before{content:"";position:absolute;inset:0;background:linear-gradient(35deg,transparent 40%,#fff 41%,#fff 43%,transparent 44%),linear-gradient(120deg,transparent 49%,#d2dfd9 50%,#d2dfd9 52%,transparent 53%)}
+.pin{position:absolute;left:52%;top:45%;font-size:30px}
+.contact{background:linear-gradient(145deg,#006d4d,#003a2b);color:white}
+.contact h3{font-size:21px;margin-bottom:8px}.contact p{font-size:12px;color:#c8e3da;margin:7px 0}
+
+/* CALCULATOR */
+.calc{background:#e9f8f2;margin-top:20px;padding:35px 0}
+.calc-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center}
+.calc h2{font-size:27px}.calc p{font-size:13px;color:#6e8980;margin:8px 0 18px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{background:white;border:1px solid #dfeae5;border-radius:8px;padding:11px}
+.field label{display:block;font-size:11px;color:#78918a}.field input{width:100%;border:0;outline:0;font-size:16px;margin-top:5px}
+.results{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.result{background:white;padding:20px;border-radius:10px;border-top:4px solid #08a85a}
+.result.blue{border-color:#1679d4}.result strong{font-size:20px;display:block;margin:5px 0}.cheap{font-size:12px;color:#08a85a}
+
+/* SECTIONS */
+section{padding:45px 0}
+.section-head{text-align:left;margin-bottom:22px}.section-head h2{font-size:25px}.section-head p{font-size:13px;color:#82958f}
+.service-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.service{background:#fff;border:1px solid var(--border);border-radius:11px;text-align:center;padding:22px 10px}
+.icon{font-size:28px;color:#0ba95e;margin-bottom:8px}.service h4{font-size:13px}.service p{font-size:10px;color:#81938d;margin-top:4px}
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pay-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;align-items:center;gap:20px}.pay-logo{font-weight:900;font-size:22px}.pay-card p{font-size:12px;color:#81938d}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.gallery div{height:150px;border-radius:10px;background-size:cover;background-position:center}
+.g1{background-image:url("https://images.unsplash.com/photo-1601584115197-04ecc0da31d8?auto=format&fit=crop&w=700&q=80")}
+.g2{background-image:url("https://images.unsplash.com/photo-1601584115197-04ecc0da31d8?auto=format&fit=crop&w=700&q=80")}
+.g3{background-image:url("https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=700&q=80")}
+.g4{background-image:url("https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=700&q=80")}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.review{background:#fff;border:1px solid var(--border);padding:20px;border-radius:12px}.review p{font-size:13px;color:#607970}.stars{color:#f5b900;margin:7px 0}
+
+/* FOOTER */
+footer{background:#002c22;color:#d7ebe5;padding:40px 0 20px}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}.footer h3{color:white;margin-bottom:12px}.footer p,.footer a{font-size:12px;color:#9ebdb4;display:block;margin:7px 0}.copy{border-top:1px solid #31574e;margin-top:25px;padding-top:15px;font-size:10px;color:#77968d}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+ nav,.phone{display:none}.menu{display:block}
+ .hero h1{font-size:40px}.fuel-grid{grid-template-columns:repeat(2,1fr)}
+ .info-grid,.calc-grid{grid-template-columns:1fr}.service-grid{grid-template-columns:repeat(3,1fr)}
+ .gallery{grid-template-columns:repeat(2,1fr)}.reviews{grid-template-columns:1fr}
+ .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+ .hero{min-height:500px}.hero-inner{min-height:500px}.hero h1{font-size:34px}
+ .fuel-grid{grid-template-columns:1fr}.service-grid{grid-template-columns:repeat(2,1fr)}
+ .fields,.results,.pay-grid,.footer-grid{grid-template-columns:1fr}
+ .features{gap:12px}.card{padding:15px}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="container nav">
+  <a class="logo" href="#">
+   <div class="logo-mark">♨</div>
+   <div><b>SO‘X</b><small>AUTO ENERGY</small></div>
+  </a>
+  <nav>
+   <a href="#">Bosh sahifa</a><a href="#prices">Yoqilg‘i narxlari</a><a href="#services">Xizmatlar</a>
+   <a href="#safety">Xavfsizlik</a><a href="#gallery">Galereya</a><a href="#contact">Aloqa</a>
+  </nav>
+  <a class="phone" href="tel:+998934154152">☎ +998 93 415 41 52</a>
+  <div class="menu">☰</div>
+ </div>
+</header>
+
+<section class="hero">
+ <div class="container hero-inner">
+  <div class="hero-copy">
+   <div class="badge">Sifatli yoqilg‘i — ishonchli yo‘l!</div>
+   <h1>SO‘X AUTO <span>ENERGY</span></h1>
+   <p>Metan, propan, benzin va dizel yoqilg‘ilari — zamonaviy servis va qulay sharoitlar bilan!</p>
+   <div class="features">
+    <span><i class="check">✓</i> Sifatli yoqilg‘i</span>
+    <span><i class="check">⚡</i> Tez xizmat</span>
+    <span><i class="check">✓</i> Ishonchli narxlar</span>
+   </div>
+  </div>
+ </div>
+</section>
+
+<main>
+<section class="fuel-section" id="prices">
+ <div class="container fuel-grid">
+  <div class="card fuel-card"><div class="fuel-top"><div class="nozzle metan">⛽</div><div><div class="fuel-name">Metan <span class="status">Ishlayapti</span></div><div class="fuel-info">Bosim: 200 bar<br>Navbat: <b>3 ta mashina</b><br>Narx: <b>5 900 so‘m/m³</b></div></div></div><button class="btn" onclick="showInfo('Metan')">Batafsil →</button></div>
+  <div class="card fuel-card"><div class="fuel-top"><div class="nozzle propan">⛽</div><div><div class="fuel-name">Propan <span class="status">Ishlayapti</span></div><div class="fuel-info">Bosim: 7.5 bar<br>Navbat: <b>2 ta mashina</b><br>Narx: <b>9 200 so‘m/l</b></div></div></div><button class="btn blue" onclick="showInfo('Propan')">Batafsil →</button></div>
+  <div class="card fuel-card"><div class="fuel-top"><div class="nozzle benzin">⛽</div><div><div class="fuel-name">Benzin <span class="status">Ishlayapti</span></div><div class="fuel-info">Navbat: <b>1 ta mashina</b><br>Narx: <b>RUS 12 000 <br> EUR 12 500so‘m/l</b></div></div></div><button class="btn red" onclick="showInfo('Benzin')">Batafsil →</button></div>
+  <div class="card fuel-card"><div class="fuel-top"><div class="nozzle dizel">⛽</div><div><div class="fuel-name">Dizel <span class="status off">Ishlayapti</span></div><div class="fuel-info">Navbat:<b>1 ta mashina</b> <br>Narx: <b>13 500 so‘m/l</b> <br> RUS Dizel</div></div></div><button class="btn yellow" onclick="showInfo('Dizel')">Batafsil →</button></div>
+ </div>
+</section>
+
+<section>
+ <div class="container info-grid">
+  <div class="card">
+   <div class="title">Navbat holati <span class="live">● Jonli</span></div>
+   <div class="queue-row"><span>🟢 Metan</span><span>3 ta mashina</span></div>
+   <div class="queue-row"><span>🔵 Propan</span><span>2 ta mashina</span></div>
+   <div class="queue-row"><span>🔴 Benzin</span><span>1 ta mashina</span></div>
+   <div class="queue-row"><span>🟡 Dizel</span><span>1 ta mashina</span></div>
+   <button class="btn" onclick="alert('Navbatga qo‘shilish funksiyasi demo rejimida.')">Navbatni kuzatish 👥</button>
+  </div>
+  
+  <div class="card">
+   <div class="title">Bizning manzil</div>
+   <p style="font-size:12px;color:#81938d;margin-bottom:10px">Toshkent viloyati, Bo‘stonliq tumani,<br>Farg‘ona viloyati, SO‘X tumani soy massivi</p>
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+   <div id="soxMap" style="height:230px;border-radius:10px;overflow:hidden;isolation:isolate;background:#e8eee9"></div>
+   <div id="soxMapInfo" style="font-size:12px;color:#81938d;margin-top:8px">📡 Joylashuvingiz aniqlanmoqda...</div>
+
+   <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+    <a href="#" id="soxBtnNavi" onclick="soxOpenNavi();return false;"
+       style="flex:1;min-width:120px;text-align:center;background:#fc3f1d;color:#fff;padding:10px;border-radius:7px;font-size:12px;font-weight:700">
+       🧭 Yandex Navigator
+    </a>
+    <a href="#" id="soxBtnYandex" target="_blank" rel="noopener"
+       style="flex:1;min-width:120px;text-align:center;background:#ffcc00;color:#222;padding:10px;border-radius:7px;font-size:12px;font-weight:700">
+       🗺 Yandex Xarita
+    </a>
+    <a href="#" id="soxBtnGoogle" target="_blank" rel="noopener"
+       style="flex:1;min-width:120px;text-align:center;background:#09a95d;color:#fff;padding:10px;border-radius:7px;font-size:12px;font-weight:700">
+       📍 Google Xarita
+    </a>
+   </div>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+   <script>
+   /* ===== SHOXOBCHA KOORDINATASI (faqat shu yerda o'zgartiriladi) ===== */
+   var SOX_LAT = 39.955986;
+   var SOX_LON = 71.129792;
+   /* =================================================================== */
+
+   var soxUser = null;
+
+   function soxLinks(){
+    var y = "https://yandex.com/maps/?rtt=auto&rtext=" + (soxUser ? soxUser.lat+","+soxUser.lon : "") + "~" + SOX_LAT + "," + SOX_LON;
+    var g = "https://www.google.com/maps/dir/?api=1&destination=" + SOX_LAT + "," + SOX_LON + (soxUser ? "&origin="+soxUser.lat+","+soxUser.lon : "");
+    document.getElementById("soxBtnYandex").href = y;
+    document.getElementById("soxBtnGoogle").href = g;
+   }
+   soxLinks();
+
+   function soxOpenNavi(){
+    var web = document.getElementById("soxBtnYandex").href;
+    var app = "yandexnavi://build_route_on_map?lat_to=" + SOX_LAT + "&lon_to=" + SOX_LON;
+    if(soxUser){ app += "&lat_from=" + soxUser.lat + "&lon_from=" + soxUser.lon; }
+    var t = setTimeout(function(){ window.location.href = web; }, 1500);
+    document.addEventListener("visibilitychange", function(){ clearTimeout(t); });
+    window.location.href = app;
+   }
+
+   (function(){
+    if(typeof L === "undefined"){
+     document.getElementById("soxMapInfo").textContent = "Xaritani yuklab bo'lmadi. Pastdagi tugmalardan foydalaning.";
+     return;
+    }
+    var map = L.map("soxMap").setView([SOX_LAT, SOX_LON], 14);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+     maxZoom: 19, attribution: "© OpenStreetMap"
+    }).addTo(map);
+
+    var soxIcon = L.divIcon({className:"", html:'<div style="font-size:30px;line-height:30px;margin:-30px 0 0 -15px">📍</div>', iconSize:[30,30]});
+    L.marker([SOX_LAT, SOX_LON], {icon: soxIcon}).addTo(map).bindPopup("<b>SO'X AUTO ENERGY</b>");
+
+    var info = document.getElementById("soxMapInfo");
+    var userMarker = null, routeLayer = null, routed = false;
+
+    function drawRoute(){
+     if(routed || !soxUser) return;
+     routed = true;
+     var url = "https://router.project-osrm.org/route/v1/driving/" + soxUser.lon + "," + soxUser.lat + ";" + SOX_LON + "," + SOX_LAT + "?overview=full&geometries=geojson";
+     fetch(url).then(function(r){ return r.json(); }).then(function(d){
+      if(!d.routes || !d.routes.length) return;
+      var r = d.routes[0];
+      routeLayer = L.geoJSON(r.geometry, {style:{color:"#1679d4", weight:5, opacity:.85}}).addTo(map);
+      map.fitBounds(routeLayer.getBounds(), {padding:[25,25]});
+      info.innerHTML = "🚗 Masofa: <b>" + (r.distance/1000).toFixed(1) + " km</b> · Taxminan <b>" + Math.round(r.duration/60) + " daqiqa</b>";
+     }).catch(function(){});
+    }
+
+    function onPos(pos){
+     soxUser = {lat: pos.coords.latitude, lon: pos.coords.longitude};
+     soxLinks();
+     if(!userMarker){
+      userMarker = L.circleMarker([soxUser.lat, soxUser.lon], {radius:9, color:"#fff", weight:3, fillColor:"#1679d4", fillOpacity:1}).addTo(map).bindPopup("Siz shu yerdasiz");
+      map.fitBounds([[soxUser.lat, soxUser.lon],[SOX_LAT, SOX_LON]], {padding:[30,30]});
+      info.textContent = "📍 Joylashuvingiz aniqlandi. Yo'l qidirilmoqda...";
+      drawRoute();
+     } else {
+      userMarker.setLatLng([soxUser.lat, soxUser.lon]);
+     }
+    }
+    function onErr(){
+     info.textContent = "Joylashuvga ruxsat berilmadi. Navigator tugmasi baribir telefoningizdagi joyingizdan yo'l quradi.";
+    }
+    if(navigator.geolocation){
+     navigator.geolocation.watchPosition(onPos, onErr, {enableHighAccuracy:true, maximumAge:10000, timeout:15000});
+    } else { onErr(); }
+   })();
+   </script>
+  </div>
+  <div class="card contact" id="contact">
+   <h3>Tezkor aloqa</h3><p>Savollaringiz bo‘lsa, biz bilan bog‘laning!</p>
+   <p>📞 +998 93 415 41 52</p><p>✈ Telegram @Usmonboev_b</p><p>📍 Farg‘ona viloyati, SO‘X tumani soy massivi</p><p>🕐 Ish vaqti: 06:00 — 24:00</p>
+  </div>
+ </div>
+</section>
+
+<section class="calc" id="calculator">
+ <div class="container calc-grid">
+  <div><h2>Metan va propan xarajatlarini taqqoslang</h2><p>Avtomobilingiz uchun qaysi yoqilg‘i iqtisodiyroq ekanini aniqlang.</p>
+   <div class="fields">
+    <div class="field"><label>Yurish masofasi (km)</label><input id="distance" type="number" value="1000"></div>
+    <div class="field"><label>Avtomobil yoqilg‘i sarfi (100km)</label><input id="consumption" type="number" value="12"></div>
+   </div>
+   <button class="btn" style="margin-top:12px" onclick="calculate()">Hisoblash 🧮</button>
+  </div>
+  <div class="results">
+   <div class="result"><small>Metan</small><strong id="metanResult">5 750 so‘m</strong><span class="cheap">● Hisoblangan xarajat</span></div>
+      <div class="result"><small>Benzin</small><strong id="benzinResult">RUS 12 000 EUR 12 500 so‘m</strong><span class="cheap">● Hisoblangan xarajat</span></div>
+   <div class="result"><small>Dizel</small><strong id="dizelResult">13 500 so‘m</strong><span class="cheap">● Hisoblangan xarajat</span></div>
+   <div class="result blue"><small>Propan</small><strong id="propanResult">9 200 so‘m</strong><span class="cheap">● Hisoblangan xarajat</span></div>
+  </div>
+ </div>
+</section>
+
+<section id="services">
+ <div class="container"><div class="section-head"><h2>Bizning xizmatlar</h2><p>Siz uchun eng yaxshi sharoitlar</p></div>
+  <div class="service-grid">
+   <div class="service"><div class="icon">⛽</div><h4>Yoqilg‘i quyish</h4><p>Tez va sifatli</p></div>
+   <div class="service"><div class="icon">🚗</div><h4>Avtomobil yuvish</h4><p>Professional xizmat</p></div>
+   <div class="service"><div class="icon">⚙</div><h4>Shina bosimi</h4><p>Bepul tekshirish</p></div>
+   <div class="service"><div class="icon">☕</div><h4>Kafe va dam olish</h4><p>Qulay zona</p></div>
+   <div class="service"><div class="icon">P</div><h4>Avtoturargoh</h4><p>Keng parking</p></div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="container"><div class="section-head"><h2>To‘lov usullari</h2><p>Qulay va xavfsiz to‘lov imkoniyatlari</p></div>
+  <div class="pay-grid">
+   <div class="pay-card"><div class="pay-logo" style="color:#09a95d">▣ NAQD</div><div><h4>Naqd pul</h4><p>Qulay va tez</p></div></div>
+   <div class="pay-card"><div class="pay-logo" style="color:#1775cf">UZCARD</div><div><h4>Uzcard / Humo</h4><p>Oson va xavfsiz to‘lov</p></div></div>
+  </div>
+ </div>
+</section>
+
+<section id="gallery">
+ <div class="container"><div class="section-head"><h2>Galereya</h2><p>Bizning shoxobchamiz, sizning qulayligingiz</p></div>
+  <div class="gallery"><div class="g1"></div><div class="g2"></div><div class="g3"></div><div class="g4"></div></div>
+ </div>
+</section>
+
+<section id="safety">
+ <div class="container"><div class="section-head"><h2>Mijozlar fikri</h2><p>Bizning xizmatimiz haqida mijozlarimiz nima deyishadi?</p></div>
+  <div class="reviews">
+   <div class="review"><b>Azizbek Karimov</b><div class="stars">★★★★★</div><p>“Xizmat juda yaxshi, navbat ham tez yuradi. Qulay joy.”</p></div>
+   <div class="review"><b>Dehqonbek To‘xtayev</b><div class="stars">★★★★★</div><p>“Metan bosimi yaxshi, xodimlar xushmuomala.”</p></div>
+   <div class="review"><b>Malika Rahmonova</b><div class="stars">★★★★★</div><p>“Avtomobil yuvish xizmatidan foydalandim. Juda yaxshi.”</p></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container footer-grid">
+  <div><div class="logo"><div class="logo-mark">♨</div><div><b>SO‘X</b><small>AUTO ENERGY</small></div></div><p>Sifatli yoqilg‘i — ishonchli yo‘l!</p></div>
+  <div><h3>Tez havolalar</h3><a href="#prices">Yoqilg‘i narxlari</a><a href="#services">Xizmatlar</a><a href="#gallery">Galereya</a></div>
+  <div><h3>Aloqa ma’lumotlari</h3><p>📞 +998 93 415 41 52</p><p>📍 Farg‘ona viloyati, SO‘X tumani soy massivi</p><p>🕐 06:00 — 24:00</p></div>
+  <div><h3>Biz ijtimoiy tarmoqlarda</h3><p>Telegram @Usmonboev_b · Instagram us_behruz · Facebook Bexruz Usmonboev · YouTube</p></div>
+ </div>
+ <div class="container copy">© 2025 SO‘X AUTO ENERGY. Barcha huquqlar himoyalangan.</div>
+</footer>
+
+<script>
+function showInfo(name){
+ alert(name + " yoqilg‘isi haqida batafsil ma’lumot. Bu demo versiya.");
+}
+function calculate(){
+ const d=Number(document.getElementById('distance').value)||0;
+ const c=Number(document.getElementById('consumption').value)||0;
+ const liters=d/100*c;
+ const metan=liters*5900;
+ const propan=liters*5400;
+ document.getElementById('metanResult').textContent=Math.round(metan).toLocaleString('uz-UZ')+" so‘m";
+ document.getElementById('propanResult').textContent=Math.round(propan).toLocaleString('uz-UZ')+" so‘m";
+}
+</script>
+</body>
+</html>
